@@ -213,9 +213,9 @@ class ImageEncoder:
                 logging.warning(f"No faces found in image {img_path}.")  # Log the error
                 return None, None  # Return None if no faces found
 
-            if len(face_locations) > 1:  # Check if multiple faces were found
-                logging.warning(f"Multiple faces found in image {img_path}.")  # Log the error
-                return None, None  # Return None if multiple faces found
+            # if len(face_locations) > 1:  # Check if multiple faces were found
+            #     logging.warning(f"Multiple faces found in image {img_path}.")  # Log the error
+            #     return None, None  # Return None if multiple faces found
 
             face_encoding = face_recognition.face_encodings(image, face_locations)[0]  # Get the face encoding
             cropped_face = self._crop_face(image, face_locations[0])  # Crop the face from the image
