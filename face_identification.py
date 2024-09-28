@@ -76,7 +76,7 @@ class FaceIdentification:
         face_data = []
         for face_encoding in face_encodings:
             name, confidence = self._get_face_name(face_encoding)
-            if name is not None:  # Skip adding if no valid name or confidence was found
+            if name is not None:
                 face_data.append((name, confidence))
         return face_data
 
@@ -107,13 +107,11 @@ class FaceIdentification:
         if confidence_score < self.MIN_CONFIDENCE_THRESHOLD:
             return None, None
 
-        # If best_match_index is valid, return the name and confidence score
         if best_match_index < len(self.known_face_encodings):
             matched_name = self.known_face_names[best_match_index]
             name_without_id = matched_name.split('_')[0]
             self.attendee_name = name_without_id
 
-            # Log attendance using the logger instance
             self.attendance_logger.log_attendance(self.attendee_name)
             return name_without_id, confidence_score
 
@@ -127,7 +125,6 @@ class FaceIdentification:
     @staticmethod
     def _draw_box_around_face(frame, top, right, bottom, left, name, confidence):
         try:
-            # Scale back up the face locations since the frame we detected in was scaled to 1/4 size
             top *= 4
             right *= 4
             bottom *= 4
@@ -135,7 +132,6 @@ class FaceIdentification:
 
             color = (0, 255, 0) if name != "Unknown" else (0, 0, 255)
 
-            # Draw the rectangle around the face
             cv.rectangle(frame, (left, top), (right, bottom), color, 2)
 
             font = cv.FONT_HERSHEY_COMPLEX
