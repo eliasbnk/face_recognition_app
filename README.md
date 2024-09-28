@@ -55,16 +55,15 @@ python main.py
 The expected folder structure for images is as follows:
 
 ```
-image_db/
-    lec_num_1/
+
+    image_db/
         student_id_1/
             image1.jpg
             image2.jpg
             ...
         student_id_2/
             ...
-    lec_num_2/
-        ...
+
 ```
 
 Only `.jpeg`, `.jpg`, and `.png` image files are processed by default. You can customize the image types by modifying the `image_types` parameter in the `ImageEncoder` class.
