@@ -4,7 +4,6 @@ import numpy as np
 from image_encoder import ImageEncoder
 import logging
 
-# Configure logging
 logging.basicConfig(filename='encoding_provider.log', level=logging.DEBUG,
                     format='%(asctime)s - %(levelname)s - %(message)s')
 
@@ -75,11 +74,10 @@ class EncodingProvider:
             for entry in os.listdir(self.known_faces_dir):
                 child_path = os.path.join(self.known_faces_dir, entry)
 
-                # Ignore non-directory entries
                 if os.path.isdir(child_path):
                     for file in os.listdir(child_path):
                         file_path = os.path.join(child_path, file)
-                        # Check for valid image files
+
                         if os.path.isfile(file_path) and os.path.splitext(file)[1].lower() in self.valid_extensions:
                             valid_images_found = True
                             logging.info(f"Valid image file found: {file_path}")
