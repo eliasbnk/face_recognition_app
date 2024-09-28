@@ -113,5 +113,5 @@ class VideoStream:
 
 
 if __name__ == "__main__":
-    video_stream = VideoStream(facial_encodings_file="facial_encodings.pkl")
+    video_stream = VideoStream(known_faces_dir="faces_db")
     video_stream.start_streaming()
