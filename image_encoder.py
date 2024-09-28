@@ -5,7 +5,6 @@ import logging  # To track what happens while the program runs
 import json  # To work with data in JSON format
 import cv2 as cv  # To process images and frames
 
-# Configure logging
 logging.basicConfig(filename='image_encoder.log', level=logging.DEBUG,
                     format='%(asctime)s - %(levelname)s - %(message)s')
 
